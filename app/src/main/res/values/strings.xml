@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Coba</string>
+    <string name="navigation_view_item_1">biodata</string>
+    <string name="navigation_view_item_2">keranjang</string>
+    <string name="navigation_view_item_3">logout</string>
+    <string name="openDrawer">Drawer dibuka</string>
+    <string name="closeDrawer">Drawer ditutup</string>
+</resources>
