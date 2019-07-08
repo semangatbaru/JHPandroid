@@ -29,6 +29,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
     //Mendefinisikan variabel
@@ -36,7 +37,10 @@ public class Home extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     SessionManager sessionManager;
-    public static String URL2 = "http://192.168.1.13:8080/herbal/ApiRegister?";
+    public static String URL2 = "http://192.168.1.16/herbal/ApiRegister/";
+
+    ListView listView;
+    private List<Barangitem> barangitemList;
     private  void loadPlayer() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL2, new Response.Listener<String>() {
             @Override
@@ -47,116 +51,43 @@ public class Home extends AppCompatActivity {
                     for (int i = 0; i < barangArray.length(); i++) {
                         JSONObject barangObject = barangArray.getJSONObject(i);
 
-                        String barangitem = (String) barangArray.getString("no"),
+                        Barangitem barangItem = new Barangitem(barangObject.getString("id_barang"),
                         barangObject.getString("namabarang"),
                                 barangObject.getString("harga"),
                                 barangObject.getString("satuan"),
                                 barangObject.getString("stok"),
                                 barangObject.getString("kategori"),
                                 barangObject.getString("gambar"),
-                                barangObject.getString("deskripsi"),
-                                barangitemList.add(barangitem);
+                                barangObject.getString("deskripsi"));
+                                barangitemList.add(barangItem);
+                        Toast.makeText(Home.this, "v !", Toast.LENGTH_LONG).show();
                     }
+                    Toast.makeText(Home.this, "s !", Toast.LENGTH_LONG).show();
                     ListViewAdapter adapter = new ListViewAdapter(barangitemList, getApplicationContext());
 
-                    listview.setAdapter(adapter);
+                    listView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(Home.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.LENGTH_SHORT.show();
+                Toast.makeText(Home.this, "DITAMBAHKAN !", Toast.LENGTH_LONG).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    //    private TextView viewnama;
-//    private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        sessionManager = new SessionManager(getApplicationContext());
-
-        findViewById(R.id.detail).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Detail.class);
-                startActivity(intent);
-                barangItemList = new ArrayList<>();
-                loadPlayer();
-            }
-        });
-
-
-
-//        HashMap<String, String> user = sessionManager.getUserDetail();
-//        String Nama = user.get(SessionManager.NAMA_USER);
-//        viewnama.setText(Html.fromHtml(Nama));
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        // Menginisiasi Toolbar dan mensetting sebagai actionbar
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        // Menginisiasi  NavigationView
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        //Mengatur Navigasi View Item yang akan dipanggil untuk menangani item klik menu navigasi
-       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            // This method will trigger on item Click of navigation menu
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                //Memeriksa apakah item tersebut dalam keadaan dicek  atau tidak,
-                if(menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
-                //Menutup  drawer item klik
-                drawerLayout.closeDrawers();
-                //Memeriksa untuk melihat item yang akan dilklik dan melalukan aksi
-                switch (menuItem.getItemId()){
-                    // pilihan menu item navigasi akan menampilkan pesan toast klik kalian bisa menggantinya
-                    //dengan intent activity
-                    case R.id.navigation1:
-                        Intent intent = new Intent(Home.this, MainActivity.class);
-                        Home.this.startActivity(intent);
-                        return true;
-                    case R.id.navigation2:
-                        Intent intent2 = new Intent(Home.this, MainActivity.class);
-                        Home.this.startActivity(intent2);
-                        return true;
-
-                    case R.id.navigation3:
-                        Intent intent4 = new Intent(Home.this, Login.class);
-                        Home.this.startActivity(intent4);
-                        return true;
-                    default:
-                        Toast.makeText(getApplicationContext(),"Ini Menu Home ",Toast.LENGTH_SHORT).show();
-                        return true;
-                }
-            }
-        });
-        // Menginisasi Drawer Layout dan ActionBarToggle
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string. openDrawer, R.string.closeDrawer){
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                // Kode di sini akan merespons setelah drawer menutup disini kita biarkan kosong
-                super.onDrawerClosed(drawerView);
-           }
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                //  Kode di sini akan merespons setelah drawer terbuka disini kita biarkan kosong
-                super.onDrawerOpened(drawerView);
-            }
-        };
-        //Mensetting actionbarToggle untuk drawer layout
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
-        //memanggil synstate
-        actionBarDrawerToggle.syncState();
-//]
+        listView =  findViewById(R.id.listView);
+        barangitemList = new ArrayList<>();
+        loadPlayer();
 
 
 

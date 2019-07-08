@@ -16,7 +16,7 @@ public class Barangitem implements Serializable {
         this.deskripsi= deskripsi;
 
     }
-}
+
     public String getNo() {
         return no;
     }

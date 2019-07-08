@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,13 +24,13 @@ public class ListViewAdapter extends ArrayAdapter<Barangitem> {
     public View getView(final int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = LayoutInflater.from(context);
         View listViewItem = inflater.inflate(R.layout.list_item,null,true);
-        TextView textViewno = listViewItem.findViewById(R.id.textViewno);
+        TextView textViewno = listViewItem.findViewById(R.id.textViewid);
         TextView textViewnamabarang = listViewItem.findViewById(R.id.textViewNamabarang);
         TextView textViewharga = listViewItem.findViewById(R.id.textViewHarga);
         TextView textViewsatuan = listViewItem.findViewById(R.id.textViewSatuan);
         TextView textViewstok = listViewItem.findViewById(R.id.textViewStok);
         TextView textViewkategori = listViewItem.findViewById(R.id.textViewKategori);
-        TextView textViewgambar = listViewItem.findViewById(R.id.textViewGambar);
+        ImageView imgVIew = listViewItem.findViewById(R.id.Jamu);
         TextView textViewdeskripsi = listViewItem.findViewById(R.id.textViewDeskripsi);
         Barangitem barangitem = barangitemList.get(position);
         textViewno.setText(barangitem.getNo());
@@ -40,7 +41,7 @@ public class ListViewAdapter extends ArrayAdapter<Barangitem> {
         textViewno.setText(barangitem.getKategori());
         textViewno.setText(barangitem.getGambar());
         textViewno.setText(barangitem.getDeskripsi());
-        Glide.with(context).load(barangitem.getGambar()).into(imgView);
+        Glide.with(context).load(barangitem.getGambar()).into(imgVIew);
         return listViewItem;
     }
 }
