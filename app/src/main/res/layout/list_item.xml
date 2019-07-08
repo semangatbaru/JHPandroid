@@ -24,6 +24,12 @@
         android:layout_height="wrap_content">
         <TextView
             android:textColor="#000000"
+            android:text="no"
+            android:id="@+id/textViewNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="#000000"
             android:text="namabarang"
             android:id="@+id/textViewNamabarang"
             android:layout_width="match_parent"

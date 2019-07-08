@@ -3,9 +3,10 @@ package com.example.coba;
 import java.io.Serializable;
 
 public class Barangitem implements Serializable {
-    String namabarang, harga, satuan, stok, kategori, gambar, deskripsi;
-    public Barangitem(String namabarang, String harga, String satuan, String stok, String kategori, String gambar, String deskripsi)
+    String no, namabarang, harga, satuan, stok, kategori, gambar, deskripsi;
+    public Barangitem(String no, String namabarang, String harga, String satuan, String stok, String kategori, String gambar, String deskripsi)
     {
+        this.no = no;
         this.namabarang = namabarang;
         this.harga= harga;
         this.satuan= satuan;
@@ -14,6 +15,10 @@ public class Barangitem implements Serializable {
         this.gambar= gambar;
         this.deskripsi= deskripsi;
 
+    }
+}
+    public String getNo() {
+        return no;
     }
     public String getNamabarang() {
         return namabarang;
