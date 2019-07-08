@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     EditText nama, alamat, nohp, password, email;
-    public static String URL2 = "http://192.168.1.16/herbal/ApiRegister?";
+    public static String URL2 = "http://192.168.1.13:8080/herbal/ApiRegister?";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
