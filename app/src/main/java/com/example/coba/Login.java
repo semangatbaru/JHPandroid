@@ -116,4 +116,8 @@ public class Login extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    public void register(View view) {
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
+    }
 }

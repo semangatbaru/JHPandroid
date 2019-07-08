@@ -32,7 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Full Name"
+            android:hint="Nama"
+            android:id="@+id/nama"
             android:inputType="text"
             android:textSize="20sp"
             />
@@ -49,7 +50,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Username"
+            android:hint="Nomor Hp"
+            android:id="@+id/nohp"
+            android:inputType="text"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Alamat"
+            android:id="@+id/alamat"
             android:inputType="text"
             android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
@@ -62,7 +80,7 @@
         android:focusableInTouchMode="true">
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -83,52 +101,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Password"
+            android:id="@+id/password"
             android:inputType="textPassword"
             android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Confirm Password"
-            android:inputType="text"
-            android:textSize="20sp" />
-    </android.support.design.widget.TextInputLayout>
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Gender"
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Male"
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
-            android:textSize="20sp" />
-    </RadioGroup>
 
     <Button
         android:layout_width="match_parent"
@@ -136,6 +114,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/button_rounded"
         android:text="REGISTER"
+        android:id="@+id/btnRegister"
         android:textColor="#ffff"
         android:textSize="22sp" />
 </LinearLayout>
